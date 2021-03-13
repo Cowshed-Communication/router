@@ -1,6 +1,6 @@
 <?php
 
-namespace Cowshed;
+namespace Cowshed\Router;
 
 use function post_exists;
 
