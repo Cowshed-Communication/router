@@ -2,7 +2,7 @@
   "name": "cowshed/router",
   "description": "WP Routes",
   "minimum-stability": "stable",
-  "version": "0.0.1-alpha",
+  "version": "0.0.3-alpha",
   "license": "proprietary",
   "authors": [
     {
