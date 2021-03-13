@@ -1,0 +1,18 @@
+{
+  "name": "cowshed/router",
+  "description": "WP Routes",
+  "minimum-stability": "stable",
+  "version": "0.0.1-alpha",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Cowshed Joe",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Cowshed\\Router\\": "Src/"
+    }
+  }
+}
