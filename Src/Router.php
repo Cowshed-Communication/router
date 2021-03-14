@@ -5,7 +5,7 @@ namespace Cowshed\Router;
 use function post_exists;
 
 class Router {
-	private array $routes;
+	private static array $routes;
 
 	private array $error_bag;
 
@@ -24,9 +24,30 @@ class Router {
 	 * @return $this
 	 */
 	public function route( $route ) {
-		$this->routes[] = $route;
+		self::$routes[] = $route;
 
 		return $this;
+	}
+
+	/**
+	 * Return the URL of the route.
+	 *
+	 * @param $ref string route reference - specified in the route array.
+	 *
+	 * @return false|mixed|string
+	 */
+	public static function url( string $ref ) {
+		$map = array_map( function ( $el ) use ( $ref ) {
+			if ( $el['ref'] == $ref ) {
+				return get_page_by_title( $el['name'] )->guid;
+			}
+		}, self::$routes );
+
+		if ( empty( $map ) ) {
+			return false;
+		}
+
+		return $map[0];
 	}
 
 	/**
@@ -40,7 +61,7 @@ class Router {
 			require_once( ABSPATH . 'wp-admin/includes/post.php' );
 		}
 
-		foreach ( $this->routes as $route ) {
+		foreach ( self::$routes as $route ) {
 
 			if ( \post_exists( $route['name'] ) ) {
 

@@ -10,16 +10,33 @@ their own templates on a specific route.
 ## Usage
 To prevent any unintended behaviour, use this package's functionality inside the `init` hook.
 
+Register Routes:
+
 ```php
+
 add_action( 'init', function () {
     $router = new Router();
-
     $router->route( [
-        'name' => 'my custom route', // slug my-custom-route
-        'template' => 'views/template-custom.blade.php' // template path
+        'name'     => 'home', // slug my-custom-route
+        'template' => 'views/template-home.blade.php', // template path
+        'ref'      => 'home', // reference for URL fetching
+    ] )->route( [
+        'name'     => 'about us',
+        'template' => 'views/template-about.blade.php',
+        'ref'      => 'about',
     ] )->bind();
 } );
+
 ```
+
+Get a route URL:
+
+```php 
+
+\Cowshed\Router\Router::url('test')
+
+```
+
 Most methods in the Router class are chainable.
 
 ## Methods
@@ -31,7 +48,6 @@ Add a route to the list.
 Params:
 
 - route - Array - containing `name` & `template` keys.
-
 
 Return:
 
@@ -45,7 +61,20 @@ Return:
 
 - Router instance
 
+### url - static
+
+Fetch the URL for a specified route.
+
+Params:
+
+- ref - String - The route reference as specified in the `route` call.
+
+Return:
+
+- mixed - url|False url if found, false if not.
+
 ### errors
+
 
 Return an array of errors and notices.
 
