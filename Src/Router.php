@@ -37,17 +37,25 @@ class Router {
 	 * @return false|mixed|string
 	 */
 	public static function url( string $ref ) {
-		$map = array_map( function ( $el ) use ( $ref ) {
+		$filter = array_filter( self::$routes, function ( $el ) use ( $ref ) {
 			if ( $el['ref'] == $ref ) {
-				return get_page_by_title( $el['name'] )->guid;
+				return 1;
 			}
-		}, self::$routes );
+		} );
 
-		if ( empty( $map ) ) {
+		if ( empty( $filter ) ) {
 			return false;
 		}
 
-		return $map[0];
+		$filter = array_values( $filter );
+
+		$page = get_page_by_title( $filter[0]['name'] );
+
+		if ( ! $page ) {
+			return false;
+		}
+
+		return $page->guid ?? false;
 	}
 
 	/**
