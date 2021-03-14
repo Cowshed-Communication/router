@@ -2,12 +2,15 @@
   "name": "cowshed/router",
   "description": "WP Routes",
   "minimum-stability": "stable",
-  "version": "0.0.3-alpha",
-  "license": "proprietary",
+  "version": "0.0.4-alpha",
+  "license": "MIT",
   "authors": [
     {
+      "name": "Cowshed"
+    },
+    {
       "name": "Cowshed Joe",
-      "email": "email@example.com"
+      "email": "joe@wearecowshed.co.uk"
     }
   ],
   "autoload": {
