@@ -47,7 +47,7 @@ Add a route to the list.
 
 Params:
 
-- route - Array - containing `name` & `template` keys.
+- route - Array - containing `name`, `template` & `ref` keys.
 
 Return:
 
