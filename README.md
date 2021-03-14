@@ -71,7 +71,7 @@ Params:
 
 Return:
 
-- mixed - url|False url if found, false if not.
+- mixed string|False-  url if found, false if not.
 
 ### errors
 
